@@ -38,9 +38,10 @@ namespace SAT.UI.MVC.Controllers
 
             var enrollment = await _context.Enrollments
                 .Include(e => e.ScheduledClass)
-                .Include(e => e.Student)
-                .Include(e => e.ScheduledClass.Course)
+                .Include(e => e.Student)                
                 .FirstOrDefaultAsync(m => m.EnrollmentId == id);
+
+            
             if (enrollment == null)
             {
                 return NotFound();

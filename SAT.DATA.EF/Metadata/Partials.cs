@@ -19,7 +19,8 @@ namespace SAT.DATA.EF.Models/*Metadata*/
     [ModelMetadataType(typeof(EnrollmentMetadata))]
     public partial class Enrollment
     {
-
+        
+        
     }
 
     [ModelMetadataType(typeof(ScheduledClassMetadata))]
