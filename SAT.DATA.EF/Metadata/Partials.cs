@@ -26,18 +26,41 @@ namespace SAT.DATA.EF.Models/*Metadata*/
     public partial class ScheduledClass
     {
 
+        
+        public string? ClassInfo
+        {
+            get
+            {
+                if (Course == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return string.Format($"{Course.CourseName} - {StartDate:d}");
+                }
+            }
+        }
+
     }
 
     [ModelMetadataType(typeof(ScheduledClassStatusMetadata))]
     public partial class ScheduledClassStatus
     {
+      
 
     }
 
     [ModelMetadataType(typeof(StudentMetadata))]
     public partial class Student
     {
-
+        public string FullName
+        {
+            get
+            {
+                return string.Format($"{FirstName} {LastName}");
+            }
+        }
     }
 
     [ModelMetadataType(typeof(StudentStatusMetadata))]
