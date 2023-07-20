@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using SAT.DATA.EF.Models;
 
 namespace SAT.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin, Scheduling")]
     public class StudentsController : Controller
     {
         private readonly SATContext _context;
@@ -18,6 +21,7 @@ namespace SAT.UI.MVC.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin, Scheduling")]
         // GET: Students
         public async Task<IActionResult> Index()
         {
@@ -25,6 +29,7 @@ namespace SAT.UI.MVC.Controllers
             return View(await sATContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin, Scheduling")]
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,6 +50,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Students/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["Ssid"] = new SelectList(_context.StudentStatuses, "Ssid", "Ssname");
@@ -56,6 +62,7 @@ namespace SAT.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("StudentId,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,Ssid")] Student student)
         {
             if (ModelState.IsValid)
@@ -69,6 +76,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Students/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Students == null)
@@ -90,6 +98,7 @@ namespace SAT.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("StudentId,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,Ssid")] Student student)
         {
             if (id != student.StudentId)
@@ -122,6 +131,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Students/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Students == null)
@@ -143,6 +153,7 @@ namespace SAT.UI.MVC.Controllers
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Students == null)
