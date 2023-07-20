@@ -51,7 +51,7 @@ namespace SAT.UI.MVC.Controllers
         // GET: Enrollments/Create
         public IActionResult Create()
         {
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "ScheduledClassId", "InstructorName");
+            ViewData["ScheduledClassId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
             ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email");
             return View();
         }

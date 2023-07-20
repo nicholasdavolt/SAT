@@ -16,13 +16,14 @@ namespace SAT.DATA.EF.Models/*Metadata*/
         public string CourseName { get; set; } = null!;
         [Required(ErrorMessage = "*Course Description is required")]
         [Display(Name = "Course Description")]
+        [DataType(DataType.MultilineText)]  
         public string CourseDescription { get; set; } = null!;
         [Required(ErrorMessage = "*Credit Hours is required")]
         [Display(Name = "Credit Hours")]
         [Range(0, 10)]
         public byte CreditHours { get; set; }
 
-        
+        [DataType(DataType.MultilineText)]
         [StringLength(250, ErrorMessage = "*Max 250 characters")]
         public string? Curriculum { get; set; }
         [StringLength(500, ErrorMessage = "*Max 500 characters")]
