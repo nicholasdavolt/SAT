@@ -22,6 +22,11 @@ namespace SAT.UI.MVC.Controllers
             return View();
         }
 
+        public IActionResult ContactConfirm()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -112,7 +117,7 @@ namespace SAT.UI.MVC.Controllers
             }
 
             
-            return View();
+            return View("ContactConfirm");
         }
 
 

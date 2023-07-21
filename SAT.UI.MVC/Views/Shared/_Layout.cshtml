@@ -59,21 +59,27 @@
                          <a asp-action="Contact" asp-controller="Home">Contact</a>
 
                      </li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+                    {
+                        <li class="label">Administrator</li>
+                        <li><a href="@Url.Action("Index", "Enrollments")"><i class="ti-user"></i>Enrollment</a></li>
+                        <li><a href="@Url.Action("Index", "Students")"><i class="ti-calendar"></i> Student </a></li>
+                        <li><a href="@Url.Action("Index", "ScheduledClasses")"><i class="ti-layout-grid2-alt"></i> Schedule Classes</a></li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a href="@Url.Action("Index", "Courses")"><i class="ti-user"></i> Courses</a></li>
+                            <li><a href="@Url.Action("Index", "StudentStatus")"><i class="ti-calendar"></i>Student Status</a></li>
+                        }
+
+
+
+
+
+
+
+                        <li><a href="../documentation/index.html"><i class="ti-file"></i> Documentation</a></li>
+                    }
                     
-                    <li class="label">Administrator</li>
-                    <li><a href="@Url.Action("Index", "Enrollments")"><i class="ti-user"></i>Enrollment</a></li>                    
-                    <li><a href="@Url.Action("Index", "Students")"><i class="ti-calendar"></i> Student </a></li>
-                    <li><a href="@Url.Action("Index", "Courses")"><i class="ti-user"></i> Courses</a></li>
-                    <li><a href="@Url.Action("Index", "ScheduledClasses")"><i class="ti-layout-grid2-alt"></i> Schedule Classes</a></li>
-                    <li><a href="@Url.Action("Index", "StudentStatus")"><i class="ti-calendar"></i>Student Status</a></li>
-
-
-                    
-                                           
-
-                    </li>
-
-                    <li><a href="../documentation/index.html"><i class="ti-file"></i> Documentation</a></li>
                     
                 </ul>
             </div>

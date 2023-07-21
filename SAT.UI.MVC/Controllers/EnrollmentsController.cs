@@ -24,7 +24,7 @@ namespace SAT.UI.MVC.Controllers
         // GET: Enrollments
         public async Task<IActionResult> Index()
         {
-            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
+            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).ThenInclude(e => e.Course).Include(e => e.Student);
             return View(await sATContext.ToListAsync());
         }
 
@@ -37,7 +37,7 @@ namespace SAT.UI.MVC.Controllers
             }
 
             var enrollment = await _context.Enrollments
-                .Include(e => e.ScheduledClass)
+                .Include(e => e.ScheduledClass).ThenInclude(e => e.Course)
                 .Include(e => e.Student)                
                 .FirstOrDefaultAsync(m => m.EnrollmentId == id);
 
@@ -46,7 +46,7 @@ namespace SAT.UI.MVC.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(enrollment);
         }
 
