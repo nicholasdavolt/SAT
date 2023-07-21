@@ -89,8 +89,8 @@ namespace SAT.UI.MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email", enrollment.StudentId);
+            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses.Include(e => e.Course), "ScheduledClassId", "ClassInfo");
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "FullName");
             return View(enrollment);
         }
 
@@ -126,8 +126,8 @@ namespace SAT.UI.MVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email", enrollment.StudentId);
+            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses.Include(e => e.Course), "ScheduledClassId", "ClassInfo");
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "FullName");
             return View(enrollment);
         }
 

@@ -4,45 +4,53 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="text-center">Edit</h1>
 
-<h4>Course</h4>
+<h4 class="text-center">Course</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+	
+    <div class="offset-3 col-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CourseId" />
-            <div class="form-group">
-                <label asp-for="CourseName" class="control-label"></label>
-                <input asp-for="CourseName" class="form-control" />
-                <span asp-validation-for="CourseName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CourseDescription" class="control-label"></label>
-                <input asp-for="CourseDescription" class="form-control" />
-                <span asp-validation-for="CourseDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreditHours" class="control-label"></label>
-                <input asp-for="CreditHours" class="form-control" />
-                <span asp-validation-for="CreditHours" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Curriculum" class="control-label"></label>
-                <input asp-for="Curriculum" class="form-control" />
-                <span asp-validation-for="Curriculum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
+			<input type="hidden" asp-for="CourseId" />			
+			<div class="row">
+				<div class="form-group col-6 ">
+					<label asp-for="CourseName" class="control-label"></label>
+					<input asp-for="CourseName" class="form-control" />
+					<span asp-validation-for="CourseName" class="text-danger"></span>
+				</div>
+
+				<div class="form-group col-4 ">
+					<label asp-for="CreditHours" class="control-label"></label>
+					<input asp-for="CreditHours" class="form-control" />
+					<span asp-validation-for="CreditHours" class="text-danger"></span>
+				</div>
+				<div class="form-group  form-check col-2">
+					@Html.DisplayNameFor(model => model.IsActive)
+					<div class="text-lg-center">
+						<label class="form-check-label">
+							<input class="form-check-input" style="height: 25px; width: 25px;" asp-for="IsActive" />
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Notes" class="control-label"></label>
+				<input asp-for="Notes" class="form-control" />
+				<span asp-validation-for="Notes" class="text-danger"></span>
+			</div>
+			<div class="form-group textarea">
+				<label asp-for="CourseDescription" class="control-label"></label>
+				<textarea asp-for="CourseDescription" class="form-control" rows="50" style="resize: none;  height: 100px;"> </textarea>
+				<span asp-validation-for="CourseDescription" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Curriculum" class="control-label"></label>
+				<textarea asp-for="Curriculum" class="form-control" style="resize: none;  height: 150px;"></textarea>
+				<span asp-validation-for="Curriculum" class="text-danger"></span>
+			</div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

@@ -19,14 +19,7 @@ namespace SAT.DATA.EF.Models/*Metadata*/
     [ModelMetadataType(typeof(EnrollmentMetadata))]
     public partial class Enrollment
     {
-        public string ClassInfo
-        {
-            get
-            {
-                return string.Format($"{ScheduledClass.Course.CourseName} - {ScheduledClass.StartDate:d}");
-            }
-        }
-        
+                
     }
 
     [ModelMetadataType(typeof(ScheduledClassMetadata))]
