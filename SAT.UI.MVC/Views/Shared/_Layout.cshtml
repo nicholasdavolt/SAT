@@ -47,6 +47,7 @@
                     <div class="logo">
                         <a href="index.html">
                            <span>Bilbo's School for Hobbit Adventuring'</span>
+                           
                         </a>
                     </div>
                     <li class="label">Main</li>
@@ -57,7 +58,6 @@
                      </li>
                      <li>
                          <a asp-action="Contact" asp-controller="Home">Contact</a>
-
                      </li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
                     {
@@ -70,13 +70,6 @@
                             <li><a href="@Url.Action("Index", "Courses")"><i class="ti-user"></i> Courses</a></li>
                             <li><a href="@Url.Action("Index", "StudentStatus")"><i class="ti-calendar"></i>Student Status</a></li>
                         }
-
-
-
-
-
-
-
                         <li><a href="~/documentation/SATDocumentaion.pdf" download><i class="ti-file"></i> Documentation</a></li>
                     }
                     
