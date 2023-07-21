@@ -6,7 +6,7 @@
 
 <h1 class="text-center">Scheduled Classes</h1>
 
-<p class="text-center"
+<p class="text-center">
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -60,7 +60,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                     
-                    < a asp - action = "Delete" asp - route - id = "@item.ScheduledClassId" > Delete </ a >
+                    <a asp-action = "Delete" asp-route-id = "@item.ScheduledClassId" > Delete </a >
                     }
                 </td>
         </tr>
